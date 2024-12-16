@@ -4,7 +4,7 @@ FROM node:18-alpine
 # Crear y establecer el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copiar los archivos de la aplicación al contenedor
+# Copiar los archivos del proyecto al contenedor
 COPY package*.json ./
 RUN npm install
 COPY . .
@@ -13,4 +13,4 @@ COPY . .
 EXPOSE 8080
 
 # Comando para ejecutar la aplicación
-CMD ["node", "app.js"]
+CMD ["node", "index.js"]
