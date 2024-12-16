@@ -1,11 +1,10 @@
 {
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.2"
   },
   "name": "helloworldjava",
   "version": "1.0.0",
   "main": "helloworld.js",
-  "devDependencies": {},
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
