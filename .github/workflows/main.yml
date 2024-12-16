@@ -20,10 +20,10 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-      - name: Build and push hello-service
+      - name: Build and push helloworldjavalb
         run: |
-          docker build ./ -f ./Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/hello-service:latest
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/hello-service:latest
+          docker build ./ -f ./Dockerfile -t ${{ secrets.DOCKER_HUB_USERNAME }}/helloworldjavalb:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/helloworldjavalb:latest
 
   deploy:
     name: Deploy to AWS EC2
@@ -61,8 +61,8 @@ jobs:
             sudo docker stop $(sudo docker ps -q) || true
             sudo docker rm $(sudo docker ps -aq) || true
 
-            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/hello-service:latest
+            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/helloworldjavalb:latest
 
-            sudo docker run -d --name hello-service -p 8081:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/hello-service:latest
+            sudo docker run -d --name helloworldjavalb -p 8081:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/helloworldjavalb:latest
 
             sudo docker image prune -af
